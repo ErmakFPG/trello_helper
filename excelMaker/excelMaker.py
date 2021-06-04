@@ -1,4 +1,4 @@
 class ExcelMaker:
     @staticmethod
-    def convert_in_excel(tasks_dict):
-        return 'tasks_excel'
+    def convert_in_excel(tasks_list):
+        return tasks_list

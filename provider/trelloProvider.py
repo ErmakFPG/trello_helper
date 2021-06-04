@@ -6,7 +6,16 @@ class TrelloProvider:
     
     @staticmethod
     def get_tasks():
-        return {}
+        return {'actions': {'eat': {'plan': ['Mon', 'Tue', 'Wed'],
+                                    'fact': ['Mon', 'Wed']
+                                    },
+                            'drink': {'plan': ['Mon', 'Wed'],
+                                      'fact': ['Mon', 'Wed']
+                                      }
+                            },
+                'start_date': '31.05.2021',
+                'end_date': '06.06.2021'
+                }
     
     @staticmethod
     def uncheck_tasks():
