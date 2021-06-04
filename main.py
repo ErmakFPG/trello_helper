@@ -12,5 +12,5 @@ trello_provider = TrelloProvider(config.TRELLO_CONFIG['board_id'],
 storage = TrelloTasksStorage()
 excel_maker = ExcelMaker()
 bot = TrelloBot()
-scheduler = Scheduler(trello_provider, storage, excel_maker, bot)
+scheduler = Scheduler(trello_provider, storage, excel_maker, bot, config)
 scheduler.run_jobs()

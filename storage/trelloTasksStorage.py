@@ -1,6 +1,6 @@
 class TrelloTasksStorage:
     @staticmethod
-    def save_tasks():
+    def save_tasks(tasks):
         pass
     
     @staticmethod
