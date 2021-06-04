@@ -19,7 +19,7 @@ class Scheduler:
         self.bot.send_message(tasks_excel)
 
     def run_jobs(self):
-        schedule.every().friday.at(self.config.SCHEDULER_TIME_REPORT).do(self._send_report)
+        schedule.every().sunday.at(self.config.SCHEDULER_TIME_REPORT).do(self._send_report)
         while True:
             schedule.run_pending()
             time.sleep(1)
