@@ -11,12 +11,14 @@ class Scheduler:
         self.config = config
     
     def _send_report(self):
+        #todo
         tasks_dict = self.trello_provider.get_tasks()
         self.storage.save_tasks(tasks_dict)
+        #todo
         self.trello_provider.uncheck_tasks()
         tasks_db = self.storage.get_tasks()
-        tasks_excel = self.excel_maker.convert_in_excel(tasks_db)
-        self.bot.send_message(tasks_excel)
+        self.excel_maker.convert_in_excel(tasks_db, 'result.xlsx')
+        self.bot.send_file('result.xlsx')
 
     def run_jobs(self):
         schedule.every().friday.at(self.config.SCHEDULER_TIME_REPORT).do(self._send_report)

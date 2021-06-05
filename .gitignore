@@ -130,3 +130,7 @@ dmypy.json
 
 #config
 config.py
+
+.idea/
+
+result.xlsx

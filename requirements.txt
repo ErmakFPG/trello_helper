@@ -1,3 +1,4 @@
 scheduler
 pytelegrambotapi
 pymongo
+openpyxl
