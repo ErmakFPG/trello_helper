@@ -1,26 +1,21 @@
-class TrelloProvider:
-    def __init__(self, board_id, login, password):
-        self.board_id = board_id
-        self.login = login
-        self.password = password
+from trello import TrelloClient
 
-    @staticmethod
-    def get_tasks():
-        return {
-            'actions':
-                {
-                    'eat': {
-                        'plan': ['Mon', 'Tue', 'Wed'],
-                        'fact': ['Mon', 'Wed']
-                    },
-                    'drink': {
-                        'plan': ['Mon', 'Wed'],
-                        'fact': ['Mon', 'Wed']
-                    }
-                },
-            'start_date': '31.05.2021',
-            'end_date': '06.06.2021'
-        }
+BOARD_ID = "Ql9mg3Lg"
+
+class TrelloProvider:
+    def __init__(self, config):
+        self._board_id = config['board_id']
+        self._client = TrelloClient(
+            api_key=config['api_key'],
+            api_secret=config['api_secret'],
+            token=config['token'],
+            token_secret=config['token_secret']
+        )
+
+    def get_tasks(self):
+        board = self._client.get_board(self._board_id)
+        for card in board.get_cards():
+            print(card.name)
 
     @staticmethod
     def uncheck_tasks():

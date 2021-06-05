@@ -6,12 +6,12 @@ from trelloBot.trelloBot import TrelloBot
 from scheduler.scheduler import Scheduler
 
 
-trello_provider = TrelloProvider(config.TRELLO_CONFIG['board_id'],
-                                 config.TRELLO_CONFIG['login'],
-                                 config.TRELLO_CONFIG['password'])
+trello_provider = TrelloProvider(config.TRELLO_CONFIG)
 
 storage = TrelloTasksStorage(config.MONGO_CONNECTION_STRING)
 excel_maker = ExcelMaker()
 bot = TrelloBot(config.TOKEN, config.CHAT_ID)
 scheduler = Scheduler(trello_provider, storage, excel_maker, bot, config)
-scheduler.run_jobs()
+# scheduler.run_jobs()
+
+scheduler._send_report()

@@ -2,3 +2,4 @@ scheduler
 pytelegrambotapi
 pymongo
 openpyxl
+py-trello

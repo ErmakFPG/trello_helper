@@ -1,6 +1,10 @@
-TRELLO_CONFIG = {'board_id': 'sample',
-                 'login': 'sample',
-                 'password': 'sample'}
+TRELLO_CONFIG = {
+    'api_key': '',
+    'api_secret': '',
+    'token': '',
+    'token_secret': '',
+    'board_id': ''
+}
 
 TOKEN = ''
 CHAT_ID = 12345
