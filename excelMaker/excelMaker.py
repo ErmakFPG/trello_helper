@@ -1,5 +1,6 @@
 from openpyxl import load_workbook
 from datetime import datetime
+from const import DATE_FORMAT, DAYS
 
 NOT_PLANNED = 0
 DONE = 1
@@ -27,11 +28,10 @@ class ExcelMaker:
             sheet.cell(row=row_index, column=1).value = activity_name
             column_index = 2
             action = actions[activity_name]
-            for day_of_week in ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']:
+            for day_of_week in DAYS.values():
                 is_Planned = day_of_week in action['plan']
                 is_Done = day_of_week in action['fact']
 
-                done_index = -1
                 if is_Done:
                     done_index = DONE
                 elif is_Planned:
@@ -57,7 +57,7 @@ class ExcelMaker:
             column_index = 1
             weekly_worksheet.cell(row=row_index, column=column_index).value = activity_name
 
-            for start_date in sorted([key for key in activity.keys()], key=lambda x: datetime.strptime(x, '%d.%m.%Y')):
+            for start_date in sorted([key for key in activity.keys()], key=lambda x: datetime.strptime(x, DATE_FORMAT)):
                 weekly_activity_data = activity[start_date]
                 weekly_worksheet.cell(row=row_index, column=column_index + 1).value = weekly_activity_data['fact']
                 weekly_worksheet.cell(row=row_index, column=column_index + 2).value = weekly_activity_data['plan']

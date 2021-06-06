@@ -133,4 +133,4 @@ config.py
 
 .idea/
 
-result.xlsx
+result*.xlsx
